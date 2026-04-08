@@ -1,23 +1,30 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const Item = ({ item }) => (
-  <View style={styles.cardContainer}>
-    <View style={styles.imgContainer}>
-      <Image
-        source={{ uri: `${item.image}` }}
-        resizeMode="cover"
-        style={styles.img}
-      />
-    </View>
-    <View style={styles.textContainer}>
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.category}>{item.category}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-      <Text style={styles.price}>{item.price}</Text>
-    </View>
-  </View>
-);
+const Item = ({ item }) => {
+  const navigation = useNavigation();
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("Single", { item })}>
+      <View style={styles.cardContainer}>
+        <View style={styles.imgContainer}>
+          <Image
+            source={{ uri: `${item.image}` }}
+            resizeMode="cover"
+            style={styles.img}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.category}>{item.category}</Text>
+          <Text style={styles.description}>{item.description}</Text>
+          <Text style={styles.price}>{item.price}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   cardContainer: {

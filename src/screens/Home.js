@@ -7,6 +7,7 @@ import {
   Image,
   FlatList,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import Swiper from "react-native-swiper";
 import Icon from "../components/Icon";
@@ -63,8 +64,16 @@ class Home extends React.Component {
           </View>
 
           <View style={styles.iconsContainer}>
-            <Icon name="cellphone" iconText="iPhone" />
-            <Icon name="android" iconText="Android" />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Ios")}
+            >
+              <Icon name="cellphone" iconText="iPhone" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Android")}
+            >
+              <Icon name="android" iconText="Android" />
+            </TouchableOpacity>
             <Icon name="laptop" iconText="Laptop" />
           </View>
 
